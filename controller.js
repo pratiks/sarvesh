@@ -16,11 +16,11 @@ const rp = require('request-promise');
 /** Create our Request Options To Google API: See API GET Request */
   const options = {
     resolveWithFullResponse: true,
-    uri: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+    uri: 'https://maps.googleapis.com/maps/api/place/textsearch/json',
     method: 'GET',
     qs: { location: '30.3076863,-97.8934848',
-     radius: '500',
-     types: 'yoga',
+     radius: '1000',
+     query: 'yoga',
      key: `${process.env.API_KEY}`
    },
     json: true
@@ -88,9 +88,11 @@ const getYogaPlaceMetaData = function (results){
     let currentYogaPlace = results[i];
     const name = currentYogaPlace.name;
     const location = currentYogaPlace.vicinity;
-    const image = currentYogaPlace.icon;
+    const photos = currentYogaPlace.photos;
+    const ratings = currentYogaPlace.ratings;
+    const address = currentYogaPlace.formatted_address;
     // pushing a new object to an array each time
-    metadataArray.push({ name: name, location: location, image: image })
+    metadataArray.push({ name: name, location: location, photos: photos, ratings: ratings, address: address })
   }
   
   return metadataArray;
