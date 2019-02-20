@@ -23,7 +23,7 @@ server.get('/', async function(incomingRequest, serverResponse) {
     results = await controller.getYogaPlacesInAustinHandler();
   // this is how you we things in our log console window
     console.log(results);
-  serverResponse.render('index', results };
+  serverResponse.render('index', {results: results.yogaPlaceMetaData, count: results.count });
   } catch(err){
       serverResponse.render('index', {results: err.message});
      console.log(err);
