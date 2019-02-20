@@ -84,15 +84,27 @@ const getYogaPlaceMetaData = function (results){
   for(let i=0;i<results.length;i++){
     // assign the variable we defined as empty object the current element
     currentYogaPlace = results[i];
+
+    // set this value as a default for the detail_url incase the site does not have one.  We change it later if they do.
+    let detail_url = "http://www.google.com";
+    
     
     // For each iteration, get the items we want.  
+    
     const name = currentYogaPlace.name;
-    const photos = currentYogaPlace.photos;
-    const detail_url  = photos.html_attributions[0];
+   
+    // check if this key exists in the object, it is not required.
+    if(currentYogaPlace.hasOwnProperty('photos')) {
+      const photos = currentYogaPlace.photos[0];
+      let detailArray = photos.html_attributions;
+      detail_url = detailArray[0];
+    } 
+    
     const ratings = currentYogaPlace.ratings;
     const address = currentYogaPlace.formatted_address;
+    
     // pushing a new object to an array each time
-    metadataArray.push({ name: name, photos: photos, ratings: ratings, address: address, detail_url: detail_url })
+    metadataArray.push({ name: name, ratings: ratings, address: address, detail_url: detail_url })
   }
   
   return metadataArray;

@@ -8,7 +8,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "sass:compile": "node-sass --include-path sass ./public/style.scss ./public/style.css"
+    "css": "node-sass --include-path sass ./public/style.scss ./public/style.css"
   },
   "dependencies": {
     "ejs": "^2.6.1",
