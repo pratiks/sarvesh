@@ -5,26 +5,26 @@
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
+<div id="wrapper">
 <div id="header">
 <h1>Yoga Listing In Austin</h1>
 </div>    
     
-<div id="wrap" style="margin-top: 200px;">
+<div id="wrap">
    <% for (var i = 0; i < results.length; i++) { %>
   <div class="card">
     <div class="thumb" id="one"></div>
     <div class="option"><i class="material-icons">favorite</i><i class="material-icons">edit</i><i class="material-icons">close</i></div>
     <%- results[i].detail_url %>
     <hr>
-    <p class="location">Location:<%= results[i].address %></p>
+    <p class="desc"><%= results[i].address %></p>
     <hr>
-    <p class="desc">Description</p>
     <div class="add"><a href="<%= results[i].detail_url %>">Find out More</a></div>
     <div class="buy"> <a href="#">Buy Passes</a></div>
   </div>
   <% } %>
 </div>
-
+  </div>   
   </body>
     <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
     <script src="https://button.glitch.me/button.js"></script>
