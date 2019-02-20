@@ -2,10 +2,15 @@ Yoga In Austin
 ===============
 
 
-## Create and API that provides Yoga Places in Austin
+Description:  This project was created in glitch. You can access it here.  If you do not have private access, you will need to provide your own google Maps / places API key.
 
-- use Google Places
 
+
+## Create A Server That Returns Yoga Places in Austin
+
+- use Google Places as a third-party lib / api
+- Using this context, we can build use cases
+ 
 ### What you will learn
 
 ##### Get started 
