@@ -18,7 +18,8 @@ const rp = require('request-promise');
     resolveWithFullResponse: true,
     uri: 'https://maps.googleapis.com/maps/api/place/textsearch/json',
     method: 'GET',
-    qs: { location: '30.3076863,-97.8934848',
+    qs: { 
+    location: '30.3076863,-97.8934848',
      radius: '1000',
      query: 'yoga',
      key: `${process.env.API_KEY}`
@@ -37,29 +38,29 @@ try{
   //  response comes back in the body.results
   // we still need to process this response object and get only the things we want! thats the next step.
   const results = googleResponse.body.results;
-
- 
-  
-//check to see if results from Google API was not an empty array! 
- if(results){
-  
-   // call our internal functions to get the data we want
-   const yogaCount = getCountOfYogaPlaces(results);
-   const yogaPlaceMetadata = getYogaPlaceMetaData(results);
+  console.log(results);
    
-   // send back to our Server route.
-   return { count: yogaCount, yogaPlaceMetaData: yogaPlaceMetadata }
- 
- } else {
-    // if google API returned nothing ( an empty array, we still have to send our server route a valid response ).
-   return { count: 0, yogaPlaceMetadata: [] }
- }
+  
+  //check to see if results from Google API was not an empty array! 
+   if(results){
+
+     // call our internal functions to get the data we want
+     const yogaCount = getCountOfYogaPlaces(results);
+     const yogaPlaceMetadata = getYogaPlaceMetaData(results);
+
+     // send back to our Server route.
+     return { count: yogaCount, yogaPlaceMetaData: yogaPlaceMetadata }
+
+   } else {
+      // if google API returned nothing ( an empty array, we still have to send our server route a valid response ).
+     return { count: 0, yogaPlaceMetadata: [] }
+   }
 
 
-}catch(err){
- return err;
-}
-   
+  }catch(err){
+   return err;
+  }
+
 };
 
 /* 
@@ -87,12 +88,13 @@ const getYogaPlaceMetaData = function (results){
   for(let i=0;i<results.length;i++){
     let currentYogaPlace = results[i];
     const name = currentYogaPlace.name;
-    const location = currentYogaPlace.vicinity;
     const photos = currentYogaPlace.photos;
+    const detail_url  = photos.html_attributions[0]
+    
     const ratings = currentYogaPlace.ratings;
     const address = currentYogaPlace.formatted_address;
     // pushing a new object to an array each time
-    metadataArray.push({ name: name, location: location, photos: photos, ratings: ratings, address: address })
+    metadataArray.push({ name: name, photos: photos, ratings: ratings, address: address, detail_url: detail_url })
   }
   
   return metadataArray;

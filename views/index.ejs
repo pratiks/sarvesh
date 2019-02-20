@@ -17,10 +17,10 @@
     <div class="option"><i class="material-icons">favorite</i><i class="material-icons">edit</i><i class="material-icons">close</i></div>
     <h3><%= results[i].name %></h3>
     <hr>
-    <p class="price">Location</p>
+    <p class="location">Location:<%= results[i].location %></p>
     <hr>
     <p class="desc">Description</p>
-    <div class="add"><a href="#">Find out More</a></div>
+    <div class="add"><a href="<%= results[i].detail_url %>">Find out More</a></div>
     <div class="buy"> <a href="#">Buy Passes</a></div>
   </div>
 
