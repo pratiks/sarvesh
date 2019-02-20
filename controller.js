@@ -32,9 +32,25 @@ try{
   // we are making the request to Google here and awaiting the response.
   const googleResponse =  await rp(options);
   console.log(options);
+  
   // the response comes back as an object
-  const resultsObject = googleResponse.body.results;
-  return resultsObject;
+  const results = googleResponse.body.results;
+
+ 
+  
+//check to see if results was not an empty array! 
+ if(results){
+ 
+   const yogaCount = getCountOfYogaPlaces(results);
+   const yogaPlaceMetadata = getYogaPlaceMetaData(results);
+   return { count: yogaCount, yogaPlaceMetaData: yogaPlaceMetadata }
+ 
+ } else {
+
+   return { count: 0, yogaPlaceMetadata: [] }
+ }
+
+
 }catch(err){
  return err;
 }
@@ -49,11 +65,26 @@ We do not export these functions as this is only for the controller to use inter
 
 */
 
+// returns the number of yoga studios found.
+const getCountOfYogaPlaces = function(results) {
+  return results.length;
+};
+
+
 
 // returns names from original results object from google.
-const getYogaPlacesNames = function (results){
+const getYogaPlaceMetadata = function (results){
 
-  for(yogaPlaces in results){}
+  let metadataArray = [];
+  // iterate through the array
+  // push items we want to the new array we created in this function
+  // return that array
+  for(let i=0;i<results.length;i++){
+    let currentYogaPlace = results[i];
+    {currentYogaPlace.name, curre}
+    
+    
+  }
   
 }
 
