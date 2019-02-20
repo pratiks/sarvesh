@@ -23,9 +23,9 @@ server.get('/', async function(incomingRequest, serverResponse) {
     results = await controller.getYogaPlacesInAustinHandler();
   // this is how you we things in our log console window
     console.log(results);
-  serverResponse.render('./views/index',{results: results});
+  serverResponse.render('index',{results: results});
   } catch(err){
-      serverResponse.render('./views/index', {results: 'Sorry couldnt get results.'});
+      serverResponse.render('index', {results: 'Sorry couldnt get results.'});
      console.log(err);
   }
   

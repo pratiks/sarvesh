@@ -29,7 +29,7 @@ Lets establish a development environment for you.
 - walk through on package managers 
 - walk through on Git
 - walk through linux basics
-
+- spend an hour giving you a playground to start learning Beginners I lessons
 
 ###### Beginners I
 
