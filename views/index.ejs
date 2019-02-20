@@ -10,9 +10,17 @@
         Yoga Listing In Austin
       </h1>
     </header>
-  <div id="results">
-    <%= results %>
-    </div>    
+ <ul class="results">
+    <% for (var i = 0; i < results.length; i++) { %>
+    <li>
+        <div class="timeline-time">
+            
+            <span><%= results[i].location %> </span>
+            <img src=<%=results[i].image %> />
+        </div>
+    </li>
+    <% } %>
+</ul>
 
 
   </body>
