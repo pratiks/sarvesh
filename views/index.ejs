@@ -10,15 +10,21 @@
         Yoga Listing In Austin
       </h1>
     </header>
- <div class="results">
-    <% for (var i = 0; i < results.length; i++) { %>
-    <div class="card">
-            <div class="thumb" id="one" style="background-image: url(<%=results[i].image %>)"></div>            
-        </div>
-    </div>
-    <% } %>
+<div id="wrap">
+   <% for (var i = 0; i < results.length; i++) { %>
+  <div class="card">
+    <div class="thumb" id="one"></div>
+    <div class="option"><i class="material-icons">favorite</i><i class="material-icons">edit</i><i class="material-icons">close</i></div>
+    <h3><%= results[i].name %></h3>
+    <hr>
+    <p class="price">Location</p>
+    <hr>
+    <p class="desc">Description</p>
+    <div class="add"><a href="#">Find out More</a></div>
+    <div class="buy"> <a href="#">Buy Passes</a></div>
+  </div>
+     <% } %>
 </div>
-
 
   </body>
     <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
