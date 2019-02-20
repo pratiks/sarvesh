@@ -11,10 +11,9 @@
       </h1>
     </header>
  <div class="results">
-   
     <% for (var i = 0; i < results.length; i++) { %>
-    <div class="cards">
-            <div class="thumb" style="background-image: url(<%=results[i].image %>)"></div>            
+    <div class="card">
+            <div class="thumb" id="one" style="background-image: url(<%=results[i].image %>)"></div>            
         </div>
     </div>
     <% } %>

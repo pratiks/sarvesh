@@ -7,7 +7,8 @@
   "description": "Austin Yoga API",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "sass:compile": "node-sass --include-path sass ./public/style.scss ./public/style.css"
   },
   "dependencies": {
     "ejs": "^2.6.1",
@@ -26,5 +27,8 @@
     "api",
     "yoga",
     "austin"
-  ]
+  ],
+  "devDependencies": {
+    "node-sass": "^4.11.0"
+  }
 }

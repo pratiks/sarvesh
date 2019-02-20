@@ -33,7 +33,9 @@ try{
   const googleResponse =  await rp(options);
   console.log(options);
   
-  // the response comes back as an object
+  //  see "google/googleResponseSchema.json"  
+  //  response comes back in the body.results
+  // we still need to process this response object and get only the things we want! thats the next step.
   const results = googleResponse.body.results;
 
  
@@ -76,7 +78,7 @@ const getCountOfYogaPlaces = function(results) {
 
 
 // returns names from original results object from google.
-const getYogaPlaceMetadata = function (results){
+const getYogaPlaceMetaData = function (results){
 
   let metadataArray = [];
   // iterate through the array
