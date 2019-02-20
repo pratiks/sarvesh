@@ -25,7 +25,7 @@ server.get('/', async function(incomingRequest, serverResponse) {
     console.log(results);
   serverResponse.render('index',{results: results});
   } catch(err){
-      serverResponse.render('index', {results: 'Sorry couldnt get results.'});
+      serverResponse.render('index', {results: err.message});
      console.log(err);
   }
   

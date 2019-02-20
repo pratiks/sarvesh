@@ -18,7 +18,7 @@ const rp = require('request-promise');
     resolveWithFullResponse: true,
     uri: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
     method: 'GET',
-    query: { location: '30.3076863,-97.8934848',
+    qs: { location: '30.3076863,-97.8934848',
      radius: '500',
      types: 'yoga',
      key: `${process.env.API_KEY}`
@@ -31,6 +31,7 @@ const getYogaPlacesInAustinHandler = async function () {
 try{
   // we are making the request to Google here and awaiting the response.
   const googleResponse =  await rp(options);
+  console.log(options);
   // the response comes back as an object
   const resultsObject = googleResponse.body.results;
   return resultsObject;
@@ -39,5 +40,24 @@ try{
 }
    
 };
+
+/* 
+
+  Controller Business Logic Private Functions
+
+We do not export these functions as this is only for the controller to use internally within this modules. 
+
+*/
+
+
+// returns names from original results object from google.
+const getYogaPlacesNames = function (results){
+
+  for(yogaPlaces in results){}
+  
+}
+
+
+
 
 module.exports = { getYogaPlacesInAustinHandler }
