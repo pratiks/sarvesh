@@ -2,11 +2,15 @@
 ::-webkit-scrollbar {
   display: none; }
 
+
+
+
 .center, #wrap {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%); 
+}
 
 * {
   box-sizing: border-box;
@@ -28,6 +32,7 @@ body {
     float: left;
     position: relative;
     border-radius: 5px;
+    margin: 25px 3px 25px 3px;
     padding: 0 10px; }
     #wrap .card:nth-child(2) {
       margin: 0 2%; }
