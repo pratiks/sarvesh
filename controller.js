@@ -37,23 +37,19 @@ try{
   //  see "google/googleResponseSchema.json"  
   //  response comes back in the body.results
   // we still need to process this response object and get only the things we want! thats the next step.
-  const results = googleResponse.body.results;
-  console.log(results);
-   
-  
-  //check to see if results from Google API was not an empty array! 
-   if(results){
-
+  const results = googleResponse.body.results;   
+  //check to see if results from Google API was not an empty array, we check the length of the array is not less than 1. 
+   if (!results.length < 1){
      // call our internal functions to get the data we want
      const yogaCount = getCountOfYogaPlaces(results);
-     const yogaPlaceMetadata = getYogaPlaceMetaData(results);
-
+     const yogaPlaceMetaData = getYogaPlaceMetaData(results);
+     console.log(yogaPlaceMetaData); 
      // send back to our Server route.
-     return { count: yogaCount, yogaPlaceMetaData: yogaPlaceMetadata }
+     return { count: yogaCount, yogaPlaceMetaData: yogaPlaceMetaData }
 
    } else {
       // if google API returned nothing ( an empty array, we still have to send our server route a valid response ).
-     return { count: 0, yogaPlaceMetadata: [] }
+     return { count: 0, yogaPlaceMetaData: [] }
    }
 
 
@@ -80,17 +76,19 @@ const getCountOfYogaPlaces = function(results) {
 
 // returns names from original results object from google.
 const getYogaPlaceMetaData = function (results){
-
+  let currentYogaPlace = {};
   let metadataArray = [];
-  // iterate through the array
-  // push items we want to the new array we created in this function
-  // return that array
+  console.log(results)
+  // iterate the array, combing thru each item [ {item}, {item}, {item}, {item} ]
+  // push items we want to the new array we created in this function, then at the end, return that array
   for(let i=0;i<results.length;i++){
-    let currentYogaPlace = results[i];
+    // assign the variable we defined as empty object the current element
+    currentYogaPlace = results[i];
+    
+    // For each iteration, get the items we want.  
     const name = currentYogaPlace.name;
     const photos = currentYogaPlace.photos;
-    const detail_url  = photos.html_attributions[0]
-    
+    const detail_url  = photos.html_attributions[0];
     const ratings = currentYogaPlace.ratings;
     const address = currentYogaPlace.formatted_address;
     // pushing a new object to an array each time
